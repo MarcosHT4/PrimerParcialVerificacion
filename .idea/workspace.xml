@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cc273c8-dd4f-42a1-aa0c-d771db71e711" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ejercicio1/DateModifier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ejercicio1/_enunciado" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ejercicio2/Aereolinea.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ejercicio2/VerificadorDias.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ejercicio2/VerificadorPasajes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ejercicio2/_enunciado" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ejercicio1test/DateModifierTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ejercicio3/AereolineaStatic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ejercicio3/VerificadorDiasStatic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ejercicio3/VerificadorPasajesStatic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ejercicio2test/AereolineaTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ejercicio3test/AereolineaStaticTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ejercicio2/Aereolinea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ejercicio2/Aereolinea.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +53,30 @@
     "nodejs_package_manager_path": "npm"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.AereolineaTest">
+    <configuration name="AereolineaTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ejercicio2test.AereolineaTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="DateModifierTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -81,6 +102,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.AereolineaTest" />
         <item itemvalue="Gradle.DateModifierTest" />
       </list>
     </recent_temporary>
@@ -93,7 +115,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1685382429012</updated>
-      <workItem from="1685382432720" duration="3436000" />
+      <workItem from="1685382432720" duration="4887000" />
     </task>
     <servers />
   </component>

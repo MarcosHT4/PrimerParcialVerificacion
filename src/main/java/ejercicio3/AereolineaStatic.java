@@ -1,19 +1,11 @@
-package ejercicio2;
+package ejercicio3;
+
+import ejercicio2.VerificadorDias;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Aereolinea {
-
-    private VerificadorPasajes verificadorPasajes;
-    private VerificadorDias verificadorDias;
-
-    public Aereolinea() {}
-
-    public Aereolinea(VerificadorPasajes verificadorPasajes, VerificadorDias verificadorDias) {
-        this.verificadorPasajes = verificadorPasajes;
-        this.verificadorDias = verificadorDias;
-    }
+public class AereolineaStatic {
 
     public String reservaVuelo(String destino, int cantidad, int dia, int mes, int gestion) {
         Map<Integer, String> meses = new HashMap<>();
@@ -29,8 +21,8 @@ public class Aereolinea {
         meses.put(10,"Octubre");
         meses.put(11,"Noviembre");
         meses.put(12,"Diciembre");
-        if(verificadorPasajes.existenPasajes(destino, cantidad)) {
-            return "el dia " + verificadorDias.getDay(dia, mes, gestion) + " " + dia + " " + meses.get(mes) + " " + gestion + " existen " + cantidad + " pasajes para " + destino;
+        if(VerificadorPasajesStatic.existenPasajes(destino, cantidad)) {
+            return "el dia " + VerificadorDiasStatic.getDay(dia, mes, gestion) + " " + dia + " " + meses.get(mes) + " " + gestion + " existen " + cantidad + " pasajes para " + destino;
         } else {
             return "no existen suficientes pasajes para " + destino;
         }
