@@ -9,6 +9,10 @@ public class AereolineaStatic {
 
     public String reservaVuelo(String destino, int cantidad, int dia, int mes, int gestion) throws Exception {
 
+        if(cantidad < 0) {
+            throw new Exception();
+        }
+
         if(gestion < 0) {
             throw new Exception();
         }

@@ -36,7 +36,14 @@ public class AereolineaTest {
             "Pando,21,21,4,2023,el dia Jueves 21 Abril 2023 existen 21 pasajes para Pando",
             "Tarija,21,15,4,2023,el dia Viernes 15 Abril 2023 existen 21 pasajes para Tarija",
             "Potosi,2,2,2,2023,el dia Sabado 2 Febrero 2023 existen 2 pasajes para Potosi",
-            "Sucre,3,3,3,2023,el dia Domingo 3 Marzo 2023 existen 3 pasajes para Sucre"
+            "Sucre,3,3,3,2023,el dia Domingo 3 Marzo 2023 existen 3 pasajes para Sucre",
+            "Chile,15,15,1,2023,el dia Viernes 15 Enero 2023 existen 15 pasajes para Chile",
+            "Colombia,15,15,2,2023,el dia Viernes 15 Febrero 2023 existen 15 pasajes para Colombia",
+            "Argentina,15,15,5,2023,el dia Viernes 15 Mayo 2023 existen 15 pasajes para Argentina",
+            "Cuba,15,15,6,2023,el dia Viernes 15 Junio 2023 existen 15 pasajes para Cuba"
+
+
+
 
 
     })
@@ -50,6 +57,10 @@ public class AereolineaTest {
         Mockito.when(verificadorPasajes.existenPasajes("Tarija",21)).thenReturn(true);
         Mockito.when(verificadorPasajes.existenPasajes("Potosi",2)).thenReturn(true);
         Mockito.when(verificadorPasajes.existenPasajes("Sucre",3)).thenReturn(true);
+        Mockito.when(verificadorPasajes.existenPasajes("Chile",15)).thenReturn(true);
+        Mockito.when(verificadorPasajes.existenPasajes("Colombia",15)).thenReturn(true);
+        Mockito.when(verificadorPasajes.existenPasajes("Argentina",15)).thenReturn(true);
+        Mockito.when(verificadorPasajes.existenPasajes("Cuba",15)).thenReturn(true);
 
 
         Mockito.when(verificadorDias.getDay(29,5,2023)).thenReturn("Lunes");
@@ -59,6 +70,10 @@ public class AereolineaTest {
         Mockito.when(verificadorDias.getDay(15,4,2023)).thenReturn("Viernes");
         Mockito.when(verificadorDias.getDay(2,2,2023)).thenReturn("Sabado");
         Mockito.when(verificadorDias.getDay(3,3,2023)).thenReturn("Domingo");
+        Mockito.when(verificadorDias.getDay(15,1,2023)).thenReturn("Viernes");
+        Mockito.when(verificadorDias.getDay(15,2,2023)).thenReturn("Viernes");
+        Mockito.when(verificadorDias.getDay(15,5,2023)).thenReturn("Viernes");
+        Mockito.when(verificadorDias.getDay(15,6,2023)).thenReturn("Viernes");
 
 
         aereolinea = new Aereolinea(verificadorPasajes, verificadorDias);
@@ -73,7 +88,7 @@ public class AereolineaTest {
             "Cochambamba,3,15,-4,2022",
             "Peru, 10,15,10,-4",
             "Pando,68,31,2,2022",
-
+            "Dubai,-40,29,3,2022"
             }
     )
     public void verifyReservaVueloException(String destino, int cantidad, int dia, int mes, int gestion) throws Exception {

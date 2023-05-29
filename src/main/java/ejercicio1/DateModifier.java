@@ -37,6 +37,10 @@ public class DateModifier {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate parsedDate = LocalDate.of(gestion, mes, dia);
         LocalDate tomorrow = parsedDate.plusDays(1);
+        if(gestion == 0) {
+            String[] fechaFinal = tomorrow.format(dtf).split("/");
+            return fechaFinal[0] + "/" + fechaFinal[1] + "/" + "0000";
+        }
         return tomorrow.format(dtf);
     }
 

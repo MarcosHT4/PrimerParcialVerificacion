@@ -30,6 +30,10 @@ public class Aereolinea {
         meses.put(11,"Noviembre");
         meses.put(12,"Diciembre");
 
+        if(cantidad < 0) {
+            throw new Exception();
+        }
+
         if(gestion < 0) {
             throw new Exception();
         }
