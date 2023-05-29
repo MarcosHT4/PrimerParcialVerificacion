@@ -5,6 +5,7 @@ import ejercicio3.AereolineaStatic;
 import ejercicio3.VerificadorDiasStatic;
 import ejercicio3.VerificadorPasajesStatic;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -44,24 +45,39 @@ public class AereolineaStaticTest {
 
     })
 
-    public void verifyReservaVuelo(String destino, int cantidad, int dia, int mes, int gestion, String expectedResult) {
-        overrideVerificadorPasajes.when(() -> VerificadorPasajesStatic.existenPasajes("La Paz", 2)).thenReturn(false);
-        overrideVerificadorPasajes.when(() -> VerificadorPasajesStatic.existenPasajes("Cochabamba", 5)).thenReturn(false);
-        overrideVerificadorPasajes.when(() -> VerificadorPasajesStatic.existenPasajes("Santa Cruz",10)).thenReturn(false);
-        overrideVerificadorPasajes.when(() -> VerificadorPasajesStatic.existenPasajes("Beni",15)).thenReturn(false);
-        overrideVerificadorPasajes.when(() -> VerificadorPasajesStatic.existenPasajes("Pando",21)).thenReturn(false);
-        overrideVerificadorPasajes.when(() -> VerificadorPasajesStatic.existenPasajes("Tarija",21)).thenReturn(false);
-        overrideVerificadorPasajes.when(() -> VerificadorPasajesStatic.existenPasajes("Sucre",3)).thenReturn(false);
+    public void verifyReservaVuelo(String destino, int cantidad, int dia, int mes, int gestion, String expectedResult) throws Exception {
+        overrideVerificadorPasajes.when(() -> VerificadorPasajesStatic.existenPasajes("Santa Cruz", 10)).thenReturn(false);
+        overrideVerificadorPasajes.when(() -> VerificadorPasajesStatic.existenPasajes("La Paz", 2)).thenReturn(true);
+        overrideVerificadorPasajes.when(() -> VerificadorPasajesStatic.existenPasajes("Cochabamba", 5)).thenReturn(true);
+        overrideVerificadorPasajes.when(() -> VerificadorPasajesStatic.existenPasajes("Beni",15)).thenReturn(true);
+        overrideVerificadorPasajes.when(() -> VerificadorPasajesStatic.existenPasajes("Pando",21)).thenReturn(true);
+        overrideVerificadorPasajes.when(() -> VerificadorPasajesStatic.existenPasajes("Tarija",21)).thenReturn(true);
+        overrideVerificadorPasajes.when(() -> VerificadorPasajesStatic.existenPasajes("Potosi",2)).thenReturn(true);
+        overrideVerificadorPasajes.when(() -> VerificadorPasajesStatic.existenPasajes("Sucre",3)).thenReturn(true);
 
         overrideVerificadorDias.when(() -> VerificadorDiasStatic.getDay(29,5,2023)).thenReturn("Lunes");
         overrideVerificadorDias.when(() -> VerificadorDiasStatic.getDay(6,2,2023)).thenReturn("Martes");
-        overrideVerificadorDias.when(() -> VerificadorDiasStatic.getDay(20,7,2023)).thenReturn("Miercoes");
+        overrideVerificadorDias.when(() -> VerificadorDiasStatic.getDay(20,7,2023)).thenReturn("Miercoles");
         overrideVerificadorDias.when(() -> VerificadorDiasStatic.getDay(21,4,2023)).thenReturn("Jueves");
         overrideVerificadorDias.when(() -> VerificadorDiasStatic.getDay(15,4,2023)).thenReturn("Viernes");
         overrideVerificadorDias.when(() -> VerificadorDiasStatic.getDay(2,2,2023)).thenReturn("Sabado");
         overrideVerificadorDias.when(() -> VerificadorDiasStatic.getDay(3,3,2023)).thenReturn("Domingo");
 
+        String actualResult = aereolineaStatic.reservaVuelo(destino, cantidad, dia, mes, gestion);
+        Assertions.assertEquals(expectedResult, actualResult);
 
+    }
+
+    @ParameterizedTest
+    @CsvSource(
+            {"Santa Cruz,2,-2,2,2022",
+                    "Cochambamba,3,15,-4,2022",
+                    "Peru, 10,15,10,-4",
+                    "Pando,68,31,2,2022",
+
+            }
+    )
+    public void verifyReservaVueloException(String destino, int cantidad, int dia, int mes, int gestion, String expectedResult) throws Exception {
 
     }
 

@@ -15,7 +15,7 @@ public class Aereolinea {
         this.verificadorDias = verificadorDias;
     }
 
-    public String reservaVuelo(String destino, int cantidad, int dia, int mes, int gestion) {
+    public String reservaVuelo(String destino, int cantidad, int dia, int mes, int gestion) throws Exception {
         Map<Integer, String> meses = new HashMap<>();
         meses.put(1,"Enero");
         meses.put(2,"Febrero");
@@ -29,6 +29,33 @@ public class Aereolinea {
         meses.put(10,"Octubre");
         meses.put(11,"Noviembre");
         meses.put(12,"Diciembre");
+
+        if(gestion < 0) {
+            throw new Exception();
+        }
+
+        if(mes <= 0 || mes >=13) {
+            throw new Exception();
+        }
+
+        if(dia <1) {
+            throw new Exception();
+        }
+
+        if(mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
+            if(dia > 31) {
+                throw new Exception();
+            }
+        } else if(mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+            if(dia > 30) {
+                throw new Exception();
+            }
+        } else if(mes == 2) {
+            if(dia > 29) {
+                throw new Exception();
+            }
+        }
+
         if(verificadorPasajes.existenPasajes(destino, cantidad)) {
             return "el dia " + verificadorDias.getDay(dia, mes, gestion) + " " + dia + " " + meses.get(mes) + " " + gestion + " existen " + cantidad + " pasajes para " + destino;
         } else {

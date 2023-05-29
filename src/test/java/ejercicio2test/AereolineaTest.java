@@ -25,6 +25,8 @@ public class AereolineaTest {
     }
 
 
+
+
     @ParameterizedTest
     @CsvSource({
             "Santa Cruz,10,10,10,2023,no existen suficientes pasajes para Santa Cruz",
@@ -38,7 +40,8 @@ public class AereolineaTest {
 
 
     })
-    public void verifyReservaVuelo(String destino, int cantidad, int dia, int mes, int gestion, String expectedResult) {
+    public void verifyReservaVuelo(String destino, int cantidad, int dia, int mes, int gestion, String expectedResult) throws Exception {
+        Mockito.when(verificadorPasajes.existenPasajes("Santa Cruz", 10)).thenReturn(false);
         Mockito.when(verificadorPasajes.existenPasajes("La Paz", 2)).thenReturn(true);
         Mockito.when(verificadorPasajes.existenPasajes("Cochabamba", 5)).thenReturn(true);
         Mockito.when(verificadorPasajes.existenPasajes("Santa Cruz",10)).thenReturn(false);
@@ -62,6 +65,20 @@ public class AereolineaTest {
         String actualResult = aereolinea.reservaVuelo(destino, cantidad, dia, mes, gestion);
         Assertions.assertEquals(expectedResult, actualResult);
 
+    }
+
+    @ParameterizedTest
+    @CsvSource(
+            {"Santa Cruz,2,-2,2,2022",
+            "Cochambamba,3,15,-4,2022",
+            "Peru, 10,15,10,-4",
+            "Pando,68,31,2,2022",
+
+            }
+    )
+    public void verifyReservaVueloException(String destino, int cantidad, int dia, int mes, int gestion) throws Exception {
+        aereolinea = new Aereolinea(verificadorPasajes, verificadorDias);
+        Assertions.assertThrows(Exception.class, () -> {aereolinea.reservaVuelo(destino, cantidad, dia, mes, gestion);});
     }
 
 }
